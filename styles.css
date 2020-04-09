@@ -1,0 +1,248 @@
+@font-face {
+  font-family: "SaolDisplay";
+  src: url("assets/fonts/SaolDisplay-RegularItalic.woff2") format("woff2");
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-color: beige;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container--alt {
+  background-color: pink;
+  background: linear-gradient(0deg, pink, pink 60%, beige);
+}
+
+.title-container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-container h1.title {
+  color: black;
+  font-family: NeueHaasGrotesk, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 6vw;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.title-container h1.title > span {
+  display: block;
+}
+
+.title-container h1.title > span:nth-child(2) {
+  margin-left: 4rem;
+  font-family: 'SaolDisplay';
+}
+
+.title-container h1.title > span:nth-child(3) {
+  margin-left: 1rem;
+}
+
+.title-container h1.title > span span.char.special {
+  font-family: 'SaolDisplay';
+}
+
+@keyframes color-rotate {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    right: 0;
+  }
+  to {
+    right: 15vw;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.box {
+  background-color: lightcoral;
+  width: 300px;
+  height: 400px;
+  transition: width 1s, filter 1s, animation 1s;
+  display: inline-block;
+  position: absolute;
+  overflow: hidden;
+  top: calc(50vh - 20vh);
+  right: 0;
+  animation: slideInFromRight 2s ease-in-out 0s 1 normal forwards running, color-rotate 30s linear 0s infinite alternate none paused;
+}
+
+.box:hover {
+  width: 400px;
+  animation: slideInFromRight 2s ease-in-out 0s 1 normal forwards running, color-rotate 30s linear 0s infinite alternate none running;
+}
+
+.box .title-container {
+  right: -15vw;
+  top: calc(-50vh + 20vh);
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-delay: 2s;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.box .title-container .title {
+  color: beige;
+}
+
+ul.menu {
+  list-style-type: none;
+  color: black;
+  font-family: 'SaolDisplay';
+  font-weight: 400;
+  font-style: normal;
+  font-size: 6vw;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+ul.menu li a {
+  text-decoration: none;
+  color: black;
+  position: relative;
+  display: inline-block;
+  margin-bottom: .5em;
+  transition: color 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  color: white;
+}
+
+ul.menu li a span.word {
+  display: block;
+  white-space: nowrap;
+  color: inherit;
+  transform: translateX(0px);
+  transition: transform .4s;
+}
+
+ul.menu li a span.word span.char {
+  transform: rotate3d(0, 0, 0, 0deg);
+  transition: transform 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transform-origin: center center .4em;
+  display: inline-block;
+}
+
+ul.menu li a span.word span.char:nth-child(1) {
+  transition-delay: 25ms;
+}
+
+ul.menu li a span.word span.char:nth-child(2) {
+  transition-delay: 50ms;
+}
+
+ul.menu li a span.word span.char:nth-child(3) {
+  transition-delay: 75ms;
+}
+
+ul.menu li a span.word span.char:nth-child(4) {
+  transition-delay: 100ms;
+}
+
+ul.menu li a span.word span.char:nth-child(5) {
+  transition-delay: 125ms;
+}
+
+ul.menu li a span.word span.char:nth-child(6) {
+  transition-delay: 150ms;
+}
+
+ul.menu li a span.word span.char:nth-child(7) {
+  transition-delay: 175ms;
+}
+
+ul.menu li a span.word span.char:nth-child(8) {
+  transition-delay: 200ms;
+}
+
+ul.menu li a span.word span.char:nth-child(9) {
+  transition-delay: 225ms;
+}
+
+ul.menu li a span.word span.char:nth-child(10) {
+  transition-delay: 250ms;
+}
+
+ul.menu li a span.word span.char:nth-child(11) {
+  transition-delay: 275ms;
+}
+
+ul.menu li a span.word:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: black;
+}
+
+ul.menu li a span.word:nth-child(2) span.char {
+  transform: rotate3d(1, -0.5, 0, 90deg);
+}
+
+ul.menu li a:hover {
+  color: black;
+}
+
+ul.menu li a:hover span.word {
+  transform: translateX(5rem);
+}
+
+ul.menu li a:hover span.word span.char {
+  transform: rotate3d(1, 0.3, 0, -90deg);
+}
+
+ul.menu li a:hover span.word span.char:nth-child(1) {
+  transition-delay: 50ms;
+}
+
+ul.menu li a:hover span.word span.char:nth-child(2) {
+  transition-delay: 75ms;
+}
+
+ul.menu li a:hover span.word span.char:nth-child(3) {
+  transition-delay: 100ms;
+}
+
+ul.menu li a:hover span.word:nth-child(2) span.char {
+  transform: rotate3d(0, 0, 0, 90deg);
+}

@@ -1,0 +1,279 @@
+@font-face {
+    font-family: "SaolDisplay";
+    src: url("assets/fonts/SaolDisplay-RegularItalic.woff2") format("woff2");
+}
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+$background-color: beige;
+$background-color-alt: pink;
+$text-color: black;
+$text-color-invert: white;
+$text-color-alt: black;
+$box-color: lightcoral;
+
+.container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: $background-color;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--alt {
+        background-color: $background-color-alt;
+        background: linear-gradient(0deg, $background-color-alt, $background-color-alt 60%, $background-color);
+    }
+}
+
+$title-container-width: 100vw;
+$title-container-height: 100vh;
+
+.title-container {
+    position: absolute;
+    width: $title-container-width;
+    height: $title-container-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1.title {
+        color: $text-color;
+        font-family: NeueHaasGrotesk,
+            'Helvetica Neue',
+            Helvetica,
+            Arial,
+            sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 6vw;
+        line-height: 1;
+        letter-spacing: 0;
+
+        &>span {
+            display: block;
+
+            &:nth-child(2) {
+                margin-left: 4rem;
+                font-family: 'SaolDisplay';
+            }
+
+            &:nth-child(3) {
+                margin-left: 1rem;
+            }
+
+            span.char.special {
+                font-family: 'SaolDisplay';
+            }
+        }
+    }
+}
+
+$box-top-offset: 20vh;
+$box-right-offset: 15vw;
+
+@keyframes color-rotate {
+    from {
+        filter: hue-rotate(0deg);
+    }
+
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        right: 0;
+    }
+
+    to {
+        right: $box-right-offset;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.box {
+    background-color: $box-color;
+    width: 300px;
+    height: 400px;
+    transition: width 1s, filter 1s, animation 1s;
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+    top: calc(#{$title-container-height/2} - #{$box-top-offset});
+    //right: $box-right-offset;
+
+    right: 0;
+    $animation-timing-function-1: ease-in-out;
+    $animation-from-right: slideInFromRight 2s $animation-timing-function-1 0s 1 normal forwards running;
+    $animation-color-rotate: color-rotate 30s linear 0s infinite alternate none;
+    animation: $animation-from-right,
+    $animation-color-rotate paused;
+
+    &:hover {
+        width: 400px;
+        animation: $animation-from-right,
+        $animation-color-rotate running;
+    }
+
+    .title-container {
+        right: -#{$box-right-offset};
+        top: calc(-#{$title-container-height/2} + #{$box-top-offset});
+
+        opacity: 0;
+        animation-name: fadeIn;
+        animation-delay: 2s;
+        animation-duration: 1s;
+        animation-timing-function: ease-in;
+        animation-fill-mode: forwards;
+
+        .title {
+            color: $background-color;
+        }
+    }
+
+}
+
+ul.menu {
+    list-style-type: none;
+
+    color: $text-color;
+    font-family: 'SaolDisplay';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 6vw;
+    line-height: 1;
+    letter-spacing: 0;
+
+    li {
+
+        a {
+            text-decoration: none;
+            color: $text-color;
+            position: relative;
+            display: inline-block;
+            margin-bottom: .5em;
+            transition: color .5s cubic-bezier(.445, .05, .55, .95);
+            color: $text-color-invert;
+
+            span.word {
+                display: block;
+                white-space: nowrap;
+                color: inherit;
+                transform: translateX(0px);
+                transition: transform .4s;
+
+                span.char {
+                    //
+                    transform: rotate3d(0, 0, 0, 0deg);
+                    transition: transform .2s cubic-bezier(.445, .05, .55, .95);
+                    // transform-origin is important for the effect!
+                    transform-origin: center center .4em;
+                    display: inline-block;
+
+                    &:nth-child(1) {
+                        transition-delay: 25ms;
+                    }
+                    &:nth-child(2) {
+                        transition-delay: 50ms;
+                    }
+                    &:nth-child(3) {
+                        transition-delay: 75ms;
+                    }
+                    &:nth-child(4) {
+                        transition-delay: 100ms;
+                    }
+                    &:nth-child(5) {
+                        transition-delay: 125ms;
+                    }
+                    &:nth-child(6) {
+                        transition-delay: 150ms;
+                    }
+                    &:nth-child(7) {
+                        transition-delay: 175ms;
+                    }
+                    &:nth-child(8) {
+                        transition-delay: 200ms;
+                    }
+                    &:nth-child(9) {
+                        transition-delay: 225ms;
+                    }
+                    &:nth-child(10) {
+                        transition-delay: 250ms;
+                    }
+                    &:nth-child(11) {
+                        transition-delay: 275ms;
+                    }
+                }
+
+                &:nth-child(2) {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    color: $text-color-alt;
+
+                    span.char {
+                        //
+                        transform: rotate3d(1, -.5, 0, 90deg);
+                    }
+                }
+            }
+
+            &:hover {
+                color: $text-color-alt;
+
+                span.word {
+                    transform: translateX(5rem);
+                    
+                    span.char {
+                        //
+                        transform: rotate3d(1, .3, 0, -90deg);
+
+                        &:nth-child(1) {
+                            transition-delay: 50ms;
+                        }
+
+                        &:nth-child(2) {
+                            transition-delay: 75ms;
+                        }
+
+                        &:nth-child(3) {
+                            transition-delay: 100ms;
+                        }
+                    }
+
+                    &:nth-child(2) {
+
+                        span.char {
+                            //
+                            transform: rotate3d(0, 0, 0, 90deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
